@@ -77,9 +77,13 @@ jobs:
       run: npm ci
     
     - name: TypeScript check
-      run: npx tsc --noEmit
+      run: npm run typecheck
 
   ios-build:
+    needs: 
+      - lint
+      - test
+      - typecheck
     runs-on: macos-latest
     
     defaults:

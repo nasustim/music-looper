@@ -56,6 +56,7 @@ music-looper/
 - `@react-native-async-storage/async-storage`: Data persistence
 - `react-native-permissions`: iOS/Android permissions
 - `@react-navigation/native`: Navigation framework
+- `@react-native-community/slider`: Slider component (removed from RN core in v0.60+)
 
 ### Development Dependencies
 - `@testing-library/react-native`: Component testing
@@ -130,17 +131,44 @@ bundle exec pod install
 ```bash
 cd mobileapp
 npm start           # Start Metro bundler
-npm run ios         # Run iOS app
+npm run ios         # Run iOS app in simulator
 npm run lint        # Run ESLint
 npm test            # Run Jest tests
+```
+
+### Building
+```bash
+cd mobileapp
+npm run build:ios           # Build iOS app (debug)
+npm run build:ios-release  # Build iOS app (release mode)
+npm run build:ios-simulator # Build for iOS simulator
+```
+
+### Maintenance
+```bash
+cd mobileapp
+npm run clean               # Clean React Native cache
+npm run clean:ios          # Clean iOS build cache
+npm run pods               # Install iOS dependencies
+npm run pods:update        # Update iOS dependencies
+npm run start:reset        # Start Metro with cache reset
+npm run typecheck          # Run TypeScript type checking
 ```
 
 ### Testing
 ```bash
 cd mobileapp
 npm test                    # Run all tests
-npm test -- --watch        # Run tests in watch mode
-npm test -- --coverage     # Run tests with coverage
+npm run test:watch         # Run tests in watch mode
+npm run test:coverage      # Run tests with coverage
+```
+
+### Code Quality
+```bash
+cd mobileapp
+npm run lint               # Check code quality
+npm run lint:fix           # Fix auto-fixable lint issues
+npm run typecheck          # Check TypeScript types
 ```
 
 ## Important Configuration
@@ -235,6 +263,16 @@ Core types are defined in `src/types/music.ts`:
 3. **Hardcoded Styles**: No theme system implemented
 4. **Limited Error UX**: Console logging only, no user-facing error handling
 5. **Mock Music Data**: Uses mock tracks, needs real iOS music library integration
+
+## Recent Fixes
+
+### ✅ Slider Component Fix
+- **Issue**: Slider was imported from 'react-native' but was removed in v0.60+
+- **Solution**: Installed `@react-native-community/slider` and updated imports
+- **Files Updated**: 
+  - `src/components/AudioPlayer.tsx` - Updated import
+  - `jest.setup.js` - Updated mock
+- **Status**: Fixed and tested ✅
 
 ## Development Notes
 

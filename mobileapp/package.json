@@ -5,12 +5,25 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "build:ios": "react-native build-ios",
+    "build:ios-release": "react-native build-ios --mode Release",
+    "build:ios-simulator": "react-native build-ios --simulator",
+    "clean": "npx react-native clean",
+    "clean:ios": "cd ios && xcodebuild clean && cd ..",
+    "pods": "cd ios && bundle exec pod install && cd ..",
+    "pods:update": "cd ios && bundle exec pod update && cd ..",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "start": "react-native start",
-    "test": "jest"
+    "start:reset": "react-native start --reset-cache",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.2.0",
+    "@react-native-community/slider": "^4.5.7",
     "@react-native/new-app-screen": "0.80.1",
     "@react-navigation/native": "^7.1.14",
     "@react-navigation/stack": "^7.4.2",

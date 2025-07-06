@@ -63,7 +63,6 @@ jest.mock('@react-native-async-storage/async-storage', () => ({
 jest.mock('react-native', () => {
   return {
     Platform: { OS: 'ios' },
-    Slider: 'Slider',
     View: 'View',
     Text: 'Text',
     TouchableOpacity: 'TouchableOpacity',
@@ -83,6 +82,9 @@ jest.mock('react-native', () => {
     },
   };
 });
+
+// Mock @react-native-community/slider
+jest.mock('@react-native-community/slider', () => 'Slider');
 
 // Mock the new app screen
 jest.mock('@react-native/new-app-screen', () => ({

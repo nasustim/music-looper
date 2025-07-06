@@ -5,8 +5,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-  Slider,
 } from 'react-native';
+import Slider from '@react-native-community/slider';
 import AudioPlayerService from '../services/audioPlayer';
 import { PlaybackState, Track } from '../types/music';
 
@@ -92,8 +92,8 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ onTrackChange }) => {
     <View style={styles.container}>
       <View style={styles.trackInfo}>
         {playbackState.currentTrack.artwork && (
-          <Image 
-            source={{ uri: playbackState.currentTrack.artwork }} 
+          <Image
+            source={{ uri: playbackState.currentTrack.artwork }}
             style={styles.artwork}
           />
         )}
@@ -124,8 +124,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ onTrackChange }) => {
             setIsSliding(false);
             handleSeek(value);
           }}
-          thumbStyle={styles.sliderThumb}
-          trackStyle={styles.sliderTrack}
+          thumbTintColor="#007AFF"
           minimumTrackTintColor="#007AFF"
           maximumTrackTintColor="#E0E0E0"
         />
@@ -135,25 +134,25 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ onTrackChange }) => {
       </View>
 
       <View style={styles.controls}>
-        <TouchableOpacity 
-          style={styles.controlButton} 
+        <TouchableOpacity
+          style={styles.controlButton}
           onPress={handlePrevious}
           disabled={playbackState.currentIndex === 0}
         >
           <Text style={styles.controlText}>⏮</Text>
         </TouchableOpacity>
-        
-        <TouchableOpacity 
-          style={[styles.controlButton, styles.playButton]} 
+
+        <TouchableOpacity
+          style={[styles.controlButton, styles.playButton]}
           onPress={handlePlayPause}
         >
           <Text style={styles.playText}>
             {playbackState.isPlaying ? '⏸' : '▶️'}
           </Text>
         </TouchableOpacity>
-        
-        <TouchableOpacity 
-          style={styles.controlButton} 
+
+        <TouchableOpacity
+          style={styles.controlButton}
           onPress={handleNext}
           disabled={playbackState.currentIndex >= playbackState.queue.length - 1}
         >
